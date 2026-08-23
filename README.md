@@ -38,11 +38,8 @@ from this preview repository.
 The full release is planned to include:
 
 - Complete CEDR-Net model implementation
-- Complete binary-pretraining and caption-training configuration
-- Reproduction commands for the main results and ablation studies
-- Dataset preprocessing instructions and scripts
+- Complete training configurations and reproduction commands
 - Trained checkpoints, when redistribution is permitted
-- Expected metrics for reproducibility checks
 
 ## Overview
 
@@ -58,9 +55,6 @@ The framework contains four main components:
    learned change evidence.
 4. A utility-modulated frozen Qwen decoder for change-description realization.
 
-Training follows a two-stage procedure. The binary change-evidence branch is
-first pretrained, after which its selected checkpoint initializes the caption
-generation stage.
 
 ## Repository Layout
 
@@ -156,31 +150,6 @@ checkpoint/
 
 No third-party backbone or language-model weights are redistributed by this
 repository.
-
-## Training and Evaluation
-
-The intended complete-release entry points are:
-
-```bash
-# Complete binary-to-caption workflow
-python -u mycode/train.py --workflow two_stage --project-root "$(pwd)"
-
-# Evaluate a trained checkpoint
-python -u mycode/evaluate.py \
-  --ckpt result/cedrnet/BEST.pth \
-  --split test
-```
-
-These commands document the planned interface only. They require the withheld
-model implementation and full configuration and therefore do not run in the
-review-stage preview.
-
-## Results and Checkpoints
-
-Raw training outputs, per-sample predictions, datasets, and checkpoints are
-excluded from Git. Aggregate paper results and downloadable trained weights
-will be added with the full release, subject to publication and redistribution
-requirements.
 
 ## Acknowledgements
 
